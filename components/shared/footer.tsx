@@ -3,8 +3,9 @@ import Image from "next/image";
 
 export const Footer = () => {
   return (
-    <footer className="py-10 px-4 bg-background border-t border-border">
-      <div className="px-4 mx-auto max-w-8xl">
+    <footer className="bg-background border-t border-border">
+      {/* CONTENIDO PRINCIPAL */}
+      <div className="mx-auto max-w-350 px-4 py-12">
         <div className="grid gap-12 lg:grid-cols-6">
           {/* Brand */}
           <div className="col-span-2">
@@ -130,21 +131,25 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-
-        <hr className="my-8 border-border" />
       </div>
-      <span className="block text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} Kala. Todos los derechos reservados.{" "}
-        Desarrollado por{" "}
-        <Link
-          href="https://sitcols.kevinbolanos.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-primary hover:underline font-semibold"
-        >
-          SITCOLS.
-        </Link>
-      </span>
+
+      {/* BARRA INFERIOR */}
+      <div className="bg-primary py-2">
+        <div className="mx-auto max-w-350 px-4 text-center">
+          <p className="text-white text-sm">
+            © {new Date().getFullYear()} Kadash. Todos los derechos reservados.
+            {" "}Desarrollado por{" "}
+            <Link
+              href="https://sitcols.kevinbolanos.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold hover:underline"
+            >
+              SITCOLS.
+            </Link>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 };

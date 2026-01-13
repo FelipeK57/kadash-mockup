@@ -5,37 +5,32 @@ import { ShoppingCart, User } from "lucide-react";
 
 export const Header = () => {
   return (
-    <header className="flex flex-col sticky top-0 bg-background">
-      <div className="bg-primary w-full py-1 text-center text-white">
-        <h3 className="font-medium text-xs">
-          Envío gratis por compras mayores a $50.000
-        </h3>
+    <header className="sticky top-0 z-50 bg-background">
+      <div className="bg-primary py-1 text-center text-white text-xs font-medium">
+        Envío gratis por compras mayores a $50.000
       </div>
-      <div className="grid grid-cols-3 py-2 px-4">
-        <div className="flex items-center">
+
+      <div className="mx-auto max-w-350 px-4">
+        <div className="grid grid-cols-3 items-center py-3">
           <Input
             placeholder="Buscar producto..."
-            className="max-w-xs shadow-none border-0 border-b rounded-none focus:border focus:rounded-lg"
+            className="max-w-xs border-0 border-b rounded-none shadow-none"
           />
-        </div>
-        <div className="flex items-center justify-center">
-          <Image
-            src={"/logo.svg"}
-            alt="Logo"
-            width={100}
-            height={50}
-            className="mx-auto"
-          />
-        </div>
-        <div className="flex items-center justify-end">
-          <Button variant={"link"} className="mr-2">
-            <ShoppingCart />
-            <span className="text-foreground">$0.00</span>
-          </Button>
-          <Button variant={"link"}>
-            <User />
-            <span className="text-foreground">Mi cuenta</span>
-          </Button>
+
+          <div className="flex justify-center">
+            <Image src="/logo.svg" alt="Logo" width={100} height={40} />
+          </div>
+
+          <div className="flex justify-end gap-2">
+            <Button variant="link">
+              <ShoppingCart />
+              <span className="text-foreground">$0.00</span>
+            </Button>
+            <Button variant="link">
+              <User />
+              <span className="text-foreground">Mi cuenta</span>
+            </Button>
+          </div>
         </div>
       </div>
     </header>
