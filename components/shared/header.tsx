@@ -2,10 +2,11 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { ShoppingCart, User } from "lucide-react";
+import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-background">
+    <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="bg-primary py-1 text-center text-white text-xs font-medium">
         Envío gratis por compras mayores a $50.000
       </div>
@@ -18,17 +19,19 @@ export const Header = () => {
           />
 
           <div className="flex justify-center">
-            <Image src="/logo.svg" alt="Logo" width={100} height={40} />
+            <Link href="/">
+              <Image src="/logo.svg" alt="Logo" width={100} height={40} />
+            </Link>
           </div>
 
           <div className="flex justify-end gap-2">
             <Button variant="link">
               <ShoppingCart />
-              <span className="text-foreground">$0.00</span>
+              <Link href="/cart" className="text-foreground">$0.00</Link>
             </Button>
             <Button variant="link">
               <User />
-              <span className="text-foreground">Mi cuenta</span>
+              <Link href="/login" className="text-foreground">Mi cuenta</Link>
             </Button>
           </div>
         </div>
