@@ -10,14 +10,16 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Trash2, Image as Placeholder, Plus, Minus } from "lucide-react";
+import { Trash2, Image as Placeholder, Plus, Minus, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function Cart() {
   // Datos de ejemplo
   const shoppingCart = [
     {
       id: 1,
-      name: "Camiseta básica",
+      name: "Producto 1",
       brand: "Marca A",
       category: "Ropa",
       price: 19900,
@@ -25,7 +27,7 @@ export default function Cart() {
     },
     {
       id: 2,
-      name: "Zapatos deportivos",
+      name: "Producto 2",
       brand: "Marca B",
       category: "Calzado",
       price: 45900,
@@ -33,7 +35,7 @@ export default function Cart() {
     },
     {
       id: 3,
-      name: "Mochila urbana",
+      name: "Producto 3",
       brand: "Marca C",
       category: "Accesorios",
       price: 29900,
@@ -62,9 +64,9 @@ export default function Cart() {
                 Productos en tu carrito ({shoppingCart.length})
               </h3>
               <Button
-                variant="outline"
+                variant="secondary"
                 size="sm"
-                className="text-red-600 hover:text-red-700 w-fit ml-auto lg:ml-0"
+                className="text-primary w-fit ml-auto lg:ml-0"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
                 Vaciar carrito
@@ -73,58 +75,52 @@ export default function Cart() {
 
             <div className="space-y-4">
               {shoppingCart.map((item) => (
-                <Card key={item.id} className="flex flex-row gap-4 p-4">
-                  {/* Imagen del producto */}
-                  <div className="grid h-24 aspect-square place-content-center rounded-md bg-accent">
-                    <Placeholder className="size-10 text-neutral-500" />
-                  </div>
-
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div className="space-y-1">
-                      <Badge variant="outline">{item.category}</Badge>
-                      <CardTitle className="text-base lg:text-lg">
-                        {item.name}
-                      </CardTitle>
-                      <CardDescription className="text-sm lg:text-base">
-                        {item.brand} • {item.category}
-                      </CardDescription>
+                <div
+                  key={item.id}
+                  className="flex items-center gap-4 border-b py-4"
+                >
+                  {/* Imagen + nombre */}
+                  <div className="flex flex-1 items-center gap-4">
+                    <div className="grid size-20 place-content-center rounded-md bg-accent">
+                      <Placeholder className="size-8 text-neutral-500" />
                     </div>
+
+                    <p className="font-medium">{item.name}</p>
                   </div>
 
-                  {/* Controles de cantidad y eliminar */}
-                  <div className="flex flex-col items-end justify-between gap-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-red-600 hover:text-red-700 w-fit"
-                    >
-                      <Trash2 className="h-4 w-4" />
+                  {/* Cantidad */}
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="icon">
+                      <Minus className="size-4" />
                     </Button>
-                    <div className="flex items-center gap-4 justify-end">
-                      <div className="flex items-center gap-2">
-                        <Button variant="outline" size="sm">
-                          <Minus className="h-4 w-4" />
-                        </Button>
-                        <span className="w-12 text-center font-medium">
-                          {item.quantity}
-                        </span>
-                        <Button variant="outline" size="sm">
-                          <Plus className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </div>
+                    <Input
+                      className="w-16 text-center"
+                      min={1}
+                      defaultValue={1}
+                    />
+                    <Button variant="outline" size="icon">
+                      <Plus className="size-4" />
+                    </Button>
                   </div>
-                </Card>
+
+                  {/* Precio */}
+                  <p className="w-24 text-right font-semibold">$1,499</p>
+
+                  {/* Remove */}
+                  <Button variant="ghost" size="icon" className="text-primary">
+                    <Trash2 />
+                  </Button>
+                </div>
               ))}
             </div>
           </section>
 
           {/* Resumen del carrito - Lado derecho */}
-          <section className="lg:w-1/3 w-full h-fit lg:sticky lg:top-20 lg:max-h-[calc(100vh-8rem)] lg:overflow-auto">
+          <section className="lg:w-1/3 w-full h-fit lg:sticky lg:top-30 lg:max-h-[calc(100vh-8rem)] lg:overflow-auto">
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg font-bold">
-                  Order Summary
+                  Resumen del carritos
                 </CardTitle>
                 <CardDescription>
                   Verifique los detalles antes de proceder al pago
@@ -134,26 +130,26 @@ export default function Cart() {
               <CardContent className="space-y-3">
                 {/* Original Price */}
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-neutral-600">Original price</p>
-                  <p className="font-medium">$7,592.00</p>
+                  <p className="text-sm text-neutral-600">Precio original</p>
+                  <p className="font-medium">$8,690.00</p>
                 </div>
 
                 {/* Savings */}
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-neutral-600">Savings</p>
-                  <p className="font-medium text-red-600">-$299.00</p>
+                  <p className="text-sm text-neutral-600">Ahorros</p>
+                  <p className="font-medium text-green-600">-$500.00</p>
                 </div>
 
                 {/* Store Pickup */}
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-neutral-600">Store Pickup</p>
-                  <p className="font-medium">$99.00</p>
+                  <p className="text-sm text-neutral-600">Recogida en tienda</p>
+                  <p className="font-medium">Gratis</p>
                 </div>
 
                 {/* Tax */}
                 <div className="flex justify-between items-center">
-                  <p className="text-sm text-neutral-600">Tax</p>
-                  <p className="font-medium">$799.00</p>
+                  <p className="text-sm text-neutral-600">Impuesto</p>
+                  <p className="font-medium">$1,000.00</p>
                 </div>
 
                 <hr className="border-neutral-300 my-2" />
@@ -161,16 +157,18 @@ export default function Cart() {
                 {/* Total */}
                 <div className="flex justify-between items-center text-lg font-bold">
                   <p>Total</p>
-                  <p>$8,191.00</p>
+                  <p>$9,190.00</p>
                 </div>
 
                 {/* Botones */}
                 <div className="flex flex-col gap-3 mt-4">
                   <Button className="w-full bg-primary hover:bg-primary/90">
-                    Proceed to Checkout
+                    <Link href="/order_success" className="w-full">
+                      Proceder al pago
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="w-full">
-                    Continue Shopping
+                  <Button variant="secondary" className="text-primary w-full">
+                    Seguir comprando
                   </Button>
                 </div>
               </CardContent>

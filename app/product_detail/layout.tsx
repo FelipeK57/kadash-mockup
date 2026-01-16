@@ -1,4 +1,4 @@
-export default function RegisterLayout({
+export default function ProductDetail({
   children,
 }: {
   children: React.ReactNode;

@@ -76,7 +76,7 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/track-order" className="footer-link">
+                <Link href="/track_order" className="footer-link">
                   Seguimiento de pedidos
                 </Link>
               </li>

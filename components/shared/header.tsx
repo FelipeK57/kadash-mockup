@@ -7,7 +7,7 @@ import Link from "next/link";
 export const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
-      <div className="bg-primary py-1 text-center text-white text-xs font-medium">
+      <div className="bg-primary py-1 text-center text-background text-xs font-medium">
         Envío gratis por compras mayores a $50.000
       </div>
 

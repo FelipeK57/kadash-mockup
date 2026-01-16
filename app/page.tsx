@@ -1,5 +1,6 @@
 import { Footer } from "@/components/shared/footer";
 import { Header } from "@/components/shared/header";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ChevronRight, Image as Placeholder, ShoppingCart } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   const categories = [
@@ -20,18 +22,18 @@ export default function Home() {
     "Categoría 5",
   ];
   const bestSellers = [
-    "Producto 1",
-    "Producto 2",
-    "Producto 3",
-    "Producto 4",
-    "Producto 5",
+    { id: 1, name: "Producto 1", price: 1000 },
+    { id: 2, name: "Producto 2", price: 1000 },
+    { id: 3, name: "Producto 3", price: 1000 },
+    { id: 4, name: "Producto 4", price: 1000 },
+    { id: 5, name: "Producto 5", price: 1000 },
   ];
   const discounts = [
-    "Producto A",
-    "Producto B",
-    "Producto C",
-    "Producto D",
-    "Producto E",
+    { id: 1, name: "Producto 1", price: 1000 },
+    { id: 2, name: "Producto 2", price: 1000 },
+    { id: 3, name: "Producto 3", price: 1000 },
+    { id: 4, name: "Producto 4", price: 1000 },
+    { id: 5, name: "Producto 5", price: 1000 },
   ];
 
   const promotional_section = [
@@ -77,21 +79,23 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-medium">Más vendidos</h2>
             <Button variant="link">
-              Ver todos <ChevronRight />
+              <Link href="/products">Ver todos</Link> <ChevronRight />
             </Button>
           </div>
 
           <div className="grid grid-cols-5 gap-6">
             {bestSellers.map((product) => (
-              <Card key={product} className="flex flex-col gap-2">
+              <Card key={product.id} className="flex flex-col gap-2">
                 <CardHeader>
                   <div className="grid h-48 place-content-center rounded-md bg-accent">
                     <Placeholder className="size-10 text-neutral-500" />
                   </div>
-                  <CardTitle className="mt-1">{product}</CardTitle>
+                  <CardTitle className="mt-1">
+                    <Link href={"/product_detail"}>{product.name}</Link>
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-2xl font-semibold">$1,000.00</p>
+                  <p>$ {product.price.toFixed(2)}</p>
                 </CardContent>
 
                 <CardFooter>
@@ -112,24 +116,29 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-medium">Descuentos</h2>
             <Button variant="link">
-              Ver todos <ChevronRight />
+              <Link href="/products">Ver todos</Link> <ChevronRight />
             </Button>
           </div>
 
           <div className="grid grid-cols-5 gap-6">
             {discounts.map((product) => (
-              <Card key={product} className="flex flex-col gap-2">
+              <Card key={product.id} className="flex flex-col gap-2">
                 <CardHeader>
-                  <div className="grid h-48 place-content-center rounded-md bg-accent">
+                  <div className="relative grid h-48 place-content-center rounded-md bg-accent">
                     <Placeholder className="size-10 text-neutral-500" />
+                    <Badge
+                      variant={"secondary"}
+                      className="absolute top-2 right-2 text-xs text-primary"
+                    >
+                      10% OFF
+                    </Badge>
                   </div>
-                  <CardTitle className="mt-1">{product}</CardTitle>
+                  <CardTitle className="mt-1">
+                    <Link href={"/product_detail"}>{product.name}</Link>
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <span className="text-sm text-neutral-500 line-through">
-                    $1,000.00
-                  </span>
-                  <p className="text-2xl font-semibold text-primary">$800.00</p>
+                  <p>$ {product.price.toFixed(2)}</p>
                 </CardContent>
 
                 <CardFooter>

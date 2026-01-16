@@ -1,4 +1,4 @@
-export default function RegisterLayout({
+export default function OrderTrackLayout({
   children,
 }: {
   children: React.ReactNode;

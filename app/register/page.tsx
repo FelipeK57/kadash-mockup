@@ -17,7 +17,7 @@ export default function Register() {
       <Header />
 
       <section className="grow flex items-center justify-center py-20">
-        <Card className="w-full max-w-md p-6">
+        <Card className="w-full max-w-md border-0 shadow-none">
           <CardHeader className="text-center">
             <CardTitle className="text-xl">Crear cuenta</CardTitle>
           </CardHeader>
