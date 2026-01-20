@@ -39,7 +39,7 @@ export default function Products() {
 
       <main className="mx-auto max-w-350 px-4 py-10 flex gap-10">
         {/* FILTROS */}
-        <aside className="w-72 shrink-0 space-y-6 sticky top-30 self-start">
+        <aside className="w-72 shrink-0 space-y-6 sticky top-40 self-start">
           <div>
             <h3 className="mb-4 font-medium">Buscar</h3>
             <Input placeholder="Buscar productos..." />

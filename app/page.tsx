@@ -153,6 +153,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LÍNEA MAYORISTA */}
+      <section className="py-10 bg-accent">
+        <div className="mx-auto max-w-350 px-4 space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-medium">Linea mayorista</h2>
+            <Button variant="link">
+              <Link href="/products">Ver todos</Link> <ChevronRight />
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-5 gap-6">
+            {bestSellers.map((product) => (
+              <Card key={product.id} className="flex flex-col gap-2">
+                <CardHeader>
+                  <div className="grid h-48 place-content-center rounded-md bg-accent">
+                    <Placeholder className="size-10 text-neutral-500" />
+                  </div>
+                  <CardTitle className="mt-1">
+                    <Link href={"/product_detail"}>{product.name}</Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>$ {product.price.toFixed(2)}</p>
+                </CardContent>
+
+                <CardFooter>
+                  <Button className="w-full">
+                    <ShoppingCart />
+                    Agregar al carrito
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECCIÓN PROMOCIONAL */}
       <section className="py-14">
         <div className="mx-auto max-w-350 px-4">
